@@ -91,3 +91,30 @@ The first two steps remains the same as context API. Only the consumtion is made
 ### UseReucer hook
 Its a hook for state management
 its a primitive type of usestate. Usestate is built on useReducer
+useReducer hook takes an initialState and a reducer function.useReducer(reducer,initialState)
+The reducer function takes 2 arguments, current state and action. reducer(currentState, action) and returns the new state.
+
+### UseState vs UseReducer
+##### Based on the type of state
+If the state is number, string, Boolean useState is better. eg. count value
+If its an Object or an Array useReducer is better eg. Person object with all person details
+
+##### Based on Number of transitions
+If need to update one or two state Variables use useState.
+If we see more setState calls, useReducer should be better.
+
+##### How related state transitions are
+If all or most of the states need to be updated as part of one action, then useReducer is a better choice. As all these states are related to one action.
+Eg. data fetch and loader.
+When the fetching is in progress, we need to set loading to true, data and error to empty values.
+When the fetch is a sucess, we need to update data, loading to false and error message to null
+When there is an error, we need to set/reset all three.
+
+##### local vs global state
+if  state is to be managed locally useState can be used.
+If to be managed globally we can use useReducer. With useReducer hook, we can pass one dispatch function down the components and sets all the states. Whereas for by using useState,we have to pass  setState function for each state.
+
+##### Buisiness Logic
+If its a simple business logic use UseState
+UseReducer is for complex logic, so that all the transitions and context can be maintained in one reducer function
+
